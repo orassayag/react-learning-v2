@@ -1,8 +1,11 @@
 // our-domain.com
 /* import { useState, useEffect } from 'react'; */
+import { Fragment } from 'react';
+import { MongoClient } from 'mongodb';
+import Head from 'next/head';
 import MeetupList from '../components/meetups/MeetupList';
 
-const DUMMY_MEETUPS = [
+/* const DUMMY_MEETUPS = [
     {
         id: 'm1',
         title: 'A First Meetup',
@@ -17,20 +20,26 @@ const DUMMY_MEETUPS = [
         address: 'Some address 10, 12345, Some City',
         description: 'This is a second meetup!'
     }
-];
+]; */
 
 const HomePage = (props) => {
-/*     const [meetups, setMettups] = useState([]);
+    /*     const [meetups, setMettups] = useState([]);
 
-    useEffect(() => {
-        // Send HTTP request and fetch data.
-        setMettups([DUMMY_MEETUPS]);
-    }, []); */
+        useEffect(() => {
+            // Send HTTP request and fetch data.
+            setMettups([DUMMY_MEETUPS]);
+        }, []); */
 
     return (
-        <MeetupList
-            meetups={props.meetups}
-        />
+        <Fragment>
+            <Head>
+                <title>React Meetups</title>
+                <meta name="description" content="Browse a huge list of highly active React meetups!" />
+            </Head>
+            <MeetupList
+                meetups={props.meetups}
+            />
+        </Fragment>
     );
 };
 
@@ -60,9 +69,20 @@ const HomePage = (props) => {
 // THIS CODE WILL RUN ONLY DURING BUILD TIME.
 export const getStaticProps = async () => {
     // Fetch data from an API.
+    const client = await MongoClient.connect('mongodb+srv://orassayag:ODCxia2kXcDvTOR6mTfy@cluster0.efrzw.mongodb.net/meetups?retryWrites=true&w=majority', { useUnifiedTopology: true });
+    const db = client.db();
+    const meetupsCollection = db.collection('meetups');
+    const meetups = await meetupsCollection.find().toArray();
+    client.close();
     return {
         props: {
-            meetups: DUMMY_MEETUPS
+            meetups: meetups.map(meetup => ({
+                id: meetup._id.toString(),
+                title: meetup.title,
+                image: meetup.image,
+                address: meetup.address,
+                description: meetup.description
+            }))
         },
         revalidate: 10
     };

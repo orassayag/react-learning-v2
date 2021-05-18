@@ -6,7 +6,7 @@ const handler = async (req, res) => {
     if (req.method === 'POST') {
         const data = req.body;
         /*         const { title, image, address, descriotion } = data; */
-        const client = await MongoClient.connect('mongodb+srv://orassayag:ODCxia2kXcDvTOR6mTfy@cluster0.efrzw.mongodb.net/meetups?retryWrites=true&w=majority');
+        const client = await MongoClient.connect('mongodb+srv://orassayag:ODCxia2kXcDvTOR6mTfy@cluster0.efrzw.mongodb.net/meetups?retryWrites=true&w=majority', { useUnifiedTopology: true });
         const db = client.db();
 
         const meetupsCollection = db.collection('meetups');
