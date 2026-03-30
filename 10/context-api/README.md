@@ -1,84 +1,147 @@
-# Client
+# Context API Example
 
-## Getting Started with Create React App
+A React application demonstrating the Context API for state management, eliminating the need for prop drilling.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This example shows how to use React's Context API to manage authentication state across the application without passing props through every component level.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[App Component] --> B[AuthContext.Provider]
+    B --> C[MainHeader]
+    B --> D[Login/Home]
+    C --> E[Navigation]
+    E --> F[useContext Hook]
+    D --> G[useContext Hook]
+    F --> H[Auth State]
+    G --> H
+    
+    style B fill:#ffd700
+    style F fill:#90EE90
+    style G fill:#90EE90
+    style H fill:#61dafb
+```
+
+## Features
+
+- Context API implementation for authentication
+- Login/Logout functionality
+- LocalStorage integration
+- Protected routes pattern
+- Context Consumer pattern
+
+## Data Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant L as Login
+    participant C as Context
+    participant LS as LocalStorage
+    participant N as Navigation
+    
+    U->>L: Enter credentials
+    L->>C: Update auth state
+    C->>LS: Save login state
+    C->>N: Trigger re-render
+    N->>U: Show logged-in UI
+    
+    U->>N: Click logout
+    N->>C: Update auth state
+    C->>LS: Remove login state
+    C->>L: Trigger re-render
+    L->>U: Show login form
+```
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the Application
+
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── Home/
+│   │   └── Home.jsx
+│   ├── Login/
+│   │   └── Login.jsx
+│   ├── MainHeader/
+│   │   ├── MainHeader.jsx
+│   │   └── Navigation.jsx
+│   └── UI/
+│       ├── Button/
+│       └── Card/
+├── context/
+│   └── auth-context.js      # Context definition
+├── App.jsx                   # Context Provider setup
+└── index.jsx
+```
+
+## Key Concepts
+
+### Context Creation
+
+The `auth-context.js` file creates a React Context that will hold authentication state.
+
+### Provider Setup
+
+The `App.jsx` component wraps the entire application with `AuthContext.Provider`, making the auth state available to all child components.
+
+### Consuming Context
+
+Components like `Navigation` and `MainHeader` consume the context using the `useContext` hook, avoiding the need for prop drilling.
+
+## Technologies Used
+
+- React 17.0.2
+- React Context API
+- React Hooks (useState, useEffect, useContext)
+- LocalStorage API
+- CSS Modules
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [React Context Documentation](https://reactjs.org/docs/context.html)
+- [useContext Hook](https://reactjs.org/docs/hooks-reference.html#usecontext)
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
 
 ## Author
 
 * **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
 * Or Assayag <orassayag@gmail.com>
 * GitHub: https://github.com/orassayag
-* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
 * LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 
-This application has an UNLICENSED License.
+This application has an MIT License - see the [LICENSE](../../LICENSE) file for details.

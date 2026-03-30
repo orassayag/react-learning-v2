@@ -1,84 +1,210 @@
-# Client
+# HTTP Custom Hooks Example
 
-## Getting Started with Create React App
+A React application demonstrating a custom hook for handling HTTP requests with loading and error states.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This example shows how to create a reusable `useHttp` hook that encapsulates all HTTP request logic, including loading states, error handling, and data transformation.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[Components] --> B[useHttp Hook]
+    B --> C[Loading State]
+    B --> D[Error State]
+    B --> E[Data State]
+    B --> F[HTTP Request]
+    F --> G{Response}
+    G -->|Success| H[Transform Data]
+    G -->|Error| I[Set Error]
+    H --> E
+    I --> D
+    E --> A
+    D --> A
+    C --> A
+    
+    style B fill:#ffd700
+    style F fill:#90EE90
+    style G fill:#FFB6C1
+```
+
+## Features
+
+- Custom `useHttp` hook for API calls
+- Automatic loading state management
+- Comprehensive error handling
+- Data transformation callback
+- Reusable across components
+- Clean separation of concerns
+- Task management example
+
+## HTTP Request Flow
+
+```mermaid
+sequenceDiagram
+    participant C as Component
+    participant H as useHttp Hook
+    participant API as Backend API
+    participant S as State
+    
+    C->>H: Call sendRequest()
+    H->>S: Set loading = true
+    H->>API: Fetch data
+    API->>H: Response
+    
+    alt Success
+        H->>H: Transform data
+        H->>S: Set data & loading = false
+        S->>C: Re-render with data
+    else Error
+        H->>S: Set error & loading = false
+        S->>C: Re-render with error
+    end
+```
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the Application
+
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+**Note**: This example requires a backend API. Update the Firebase URL in the code or set up your own backend.
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── NewTask/
+│   │   ├── NewTask.js         # Uses useHttp
+│   │   └── TaskForm.js
+│   ├── Tasks/
+│   │   ├── Tasks.js           # Uses useHttp
+│   │   └── TaskItem.js
+│   └── UI/
+│       └── Section.js
+├── hooks/
+│   └── use-http.js            # Custom HTTP hook
+├── App.js
+└── index.js
+```
+
+## Key Concepts
+
+### useHttp Hook Features
+
+```mermaid
+graph TD
+    A[useHttp Hook] --> B[State Management]
+    A --> C[Request Function]
+    A --> D[Error Handling]
+    A --> E[Loading States]
+    
+    B --> F[isLoading]
+    B --> G[error]
+    B --> H[data]
+    
+    C --> I[Configurable]
+    C --> J[Reusable]
+    C --> K[Async]
+    
+    style A fill:#ffd700
+    style B fill:#90EE90
+    style C fill:#FFB6C1
+```
+
+### Hook Benefits
+
+1. **Reusability**: Use the same hook for GET, POST, PUT, DELETE
+2. **Consistency**: Same loading/error pattern everywhere
+3. **DRY Principle**: No repeated request logic
+4. **Testability**: Easy to test in isolation
+5. **Maintainability**: Single source of truth
+
+### Usage Pattern
+
+The hook returns:
+- `isLoading`: Boolean indicating request status
+- `error`: Error object if request fails
+- `sendRequest`: Function to trigger the request
+
+## Common HTTP Hook Patterns
+
+```mermaid
+flowchart LR
+    A[HTTP Operations] --> B[GET - Fetch Data]
+    A --> C[POST - Create]
+    A --> D[PUT - Update]
+    A --> E[DELETE - Remove]
+    
+    B --> F[useHttp Hook]
+    C --> F
+    D --> F
+    E --> F
+    
+    F --> G[Unified Interface]
+    
+    style F fill:#ffd700
+    style G fill:#90EE90
+```
+
+## Error Handling
+
+The hook provides comprehensive error handling:
+- Network errors
+- API errors
+- Parsing errors
+- Timeout handling
+- User-friendly error messages
+
+## Technologies Used
+
+- React 17.0.2
+- React Hooks (useState, useEffect, useCallback)
+- Custom Hooks pattern
+- Fetch API
+- Firebase Realtime Database (example backend)
+- CSS
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Building Your Own Hooks](https://reactjs.org/docs/hooks-custom.html)
+- [useCallback Hook](https://reactjs.org/docs/hooks-reference.html#usecallback)
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
 
 ## Author
 
 * **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
 * Or Assayag <orassayag@gmail.com>
 * GitHub: https://github.com/orassayag
-* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
 * LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 
-This application has an UNLICENSED License.
+This application has an MIT License - see the [LICENSE](../../LICENSE) file for details.

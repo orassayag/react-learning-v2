@@ -1,84 +1,168 @@
-# Client
+# Simple Custom Hooks Example
 
-## Getting Started with Create React App
+A React application demonstrating how to create and use custom hooks for extracting and reusing component logic.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+
+This example shows how to create a custom `useCounter` hook that encapsulates counter logic, allowing it to be reused in multiple components.
+
+## Architecture
+
+```mermaid
+flowchart TD
+    A[Components] --> B[useCounter Hook]
+    B --> C[useState]
+    B --> D[useEffect]
+    C --> E[Counter State]
+    D --> F[Interval Logic]
+    E --> G[Return Value]
+    F --> G
+    G --> A
+    
+    style B fill:#ffd700
+    style C fill:#90EE90
+    style D fill:#FFB6C1
+    style G fill:#61dafb
+```
+
+## Features
+
+- Custom `useCounter` hook
+- Reusable counter logic
+- Forward counter component
+- Backward counter component
+- Configurable increment/decrement
+- Automatic interval updates
+
+## Hook Flow
+
+```mermaid
+sequenceDiagram
+    participant C as Component
+    participant H as useCounter Hook
+    participant S as State
+    participant E as Effect
+    
+    C->>H: Call hook with direction
+    H->>S: Initialize state
+    H->>E: Setup interval
+    E->>S: Update counter
+    S->>H: Return new value
+    H->>C: Provide counter value
+    
+    loop Every second
+        E->>S: Increment/Decrement
+        S->>C: Trigger re-render
+    end
+```
+
+## Getting Started
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running the Application
+
+```bash
+npm start
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### Building for Production
+
+```bash
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── BackwardCounter.js     # Uses useCounter(false)
+│   ├── ForwardCounter.js      # Uses useCounter(true)
+│   └── Card.js
+├── hooks/
+│   └── use-counter.js         # Custom hook
+├── App.js
+└── index.js
+```
+
+## Key Concepts
+
+### Custom Hook Pattern
+
+Custom hooks allow you to extract component logic into reusable functions. They follow the "use" naming convention and can use other hooks.
+
+### Benefits of Custom Hooks
+
+```mermaid
+graph TD
+    A[Custom Hooks] --> B[Logic Reusability]
+    A --> C[Separation of Concerns]
+    A --> D[Cleaner Components]
+    A --> E[Easier Testing]
+    A --> F[Better Organization]
+    
+    style A fill:#ffd700
+    style B fill:#90EE90
+    style C fill:#90EE90
+    style D fill:#90EE90
+    style E fill:#90EE90
+    style F fill:#90EE90
+```
+
+### useCounter Hook
+
+The custom hook:
+- Accepts a `forwards` parameter
+- Manages counter state internally
+- Sets up interval for automatic updates
+- Cleans up interval on unmount
+- Returns the current counter value
+
+## Use Cases for Custom Hooks
+
+1. **Data Fetching**: Encapsulate API calls and loading states
+2. **Form Handling**: Manage form state and validation
+3. **Window Events**: Handle resize, scroll, etc.
+4. **LocalStorage**: Sync state with localStorage
+5. **Animation**: Manage animation states
+6. **Timers**: Handle intervals and timeouts
+
+## Technologies Used
+
+- React 17.0.2
+- React Hooks (useState, useEffect)
+- Custom Hooks pattern
+- CSS
 
 ## Available Scripts
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `npm start` - Runs the app in development mode
+- `npm test` - Launches the test runner
+- `npm run build` - Builds the app for production
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Building Your Own Hooks](https://reactjs.org/docs/hooks-custom.html)
+- [Rules of Hooks](https://reactjs.org/docs/hooks-rules.html)
+- [Hooks API Reference](https://reactjs.org/docs/hooks-reference.html)
+- [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)
 
 ## Author
 
 * **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
 * Or Assayag <orassayag@gmail.com>
 * GitHub: https://github.com/orassayag
-* StackOverFlow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
 * LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 
-This application has an UNLICENSED License.
+This application has an MIT License - see the [LICENSE](../../LICENSE) file for details.
