@@ -10,8 +10,8 @@ let isInitial = true;
 
 function App() {
   const dispatch = useDispatch();
-  const { cartIsVisible, notification } = useSelector(state => state.ui);
-  const cart = useSelector(state => state.cart);
+  const { cartIsVisible, notification } = useSelector((state) => state.ui);
+  const cart = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(fetchCartData());
@@ -29,11 +29,13 @@ function App() {
 
   return (
     <Fragment>
-      {notification && <Notification
-        status={notification.status}
-        title={notification.title}
-        message={notification.message}
-      />}
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
       <Layout>
         {cartIsVisible && <Cart />}
         <Products />

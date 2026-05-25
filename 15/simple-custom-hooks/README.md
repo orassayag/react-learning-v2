@@ -18,7 +18,7 @@ flowchart TD
     E --> G[Return Value]
     F --> G
     G --> A
-    
+
     style B fill:#ffd700
     style C fill:#90EE90
     style D fill:#FFB6C1
@@ -42,14 +42,14 @@ sequenceDiagram
     participant H as useCounter Hook
     participant S as State
     participant E as Effect
-    
+
     C->>H: Call hook with direction
     H->>S: Initialize state
     H->>E: Setup interval
     E->>S: Update counter
     S->>H: Return new value
     H->>C: Provide counter value
-    
+
     loop Every second
         E->>S: Increment/Decrement
         S->>C: Trigger re-render
@@ -107,7 +107,7 @@ graph TD
     A --> D[Cleaner Components]
     A --> E[Easier Testing]
     A --> F[Better Organization]
-    
+
     style A fill:#ffd700
     style B fill:#90EE90
     style C fill:#90EE90
@@ -119,6 +119,7 @@ graph TD
 ### useCounter Hook
 
 The custom hook:
+
 - Accepts a `forwards` parameter
 - Manages counter state internally
 - Sets up interval for automatic updates
@@ -157,11 +158,11 @@ The custom hook:
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import classes from './Counter.module.css';
 
 class CounterClass extends Component {
-
   constructor() {
     super();
     this.incrementHandler.bind(this);
@@ -19,9 +18,7 @@ class CounterClass extends Component {
     this.props.decrement();
   }
 
-  toggleCounterHandler() {
-
-  }
+  toggleCounterHandler() {}
 
   render() {
     return (
@@ -36,18 +33,18 @@ class CounterClass extends Component {
       </main>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
-    counter: state.counter
+    counter: state.counter,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    increment: () => dispatch({ type: 'increment '}),
-    decrement: () => dispatch({ type: 'decrement '})
+    increment: () => dispatch({ type: 'increment ' }),
+    decrement: () => dispatch({ type: 'decrement ' }),
   };
 };
 

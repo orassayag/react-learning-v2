@@ -52,7 +52,8 @@ function App() {
 
     fetchTasks(
       { url: 'https://jsonplaceholder.typicode.com/posts' },
-      transformTasks);
+      transformTasks
+    );
   }, [fetchTasks]);
 
   const taskAddHandler = (task) => {

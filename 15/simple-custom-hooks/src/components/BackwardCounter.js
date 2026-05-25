@@ -4,7 +4,7 @@ import useCounter from '../hooks/use-counter';
 
 const BackwardCounter = () => {
   const counter = useCounter(false);
-/*   const [counter, setCounter] = useState(0);
+  /*   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {

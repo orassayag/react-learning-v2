@@ -20,7 +20,7 @@ flowchart TD
     F --> I[Server-rendered HTML]
     G --> D
     D --> C
-    
+
     style B fill:#000000
     style C fill:#ffd700
     style D fill:#90EE90
@@ -48,7 +48,7 @@ sequenceDiagram
     participant N as Next.js Server
     participant A as API Route
     participant D as MongoDB
-    
+
     B->>N: Request /meetups
     N->>A: Fetch data
     A->>D: Query database
@@ -126,7 +126,7 @@ graph TD
     A --> C[new-meetup/index.js → /new-meetup]
     A --> D["[meetupId]/index.js → /meetup-id"]
     A --> E[api/new-meetup.js → /api/new-meetup]
-    
+
     style A fill:#000000
     style B fill:#ffd700
     style C fill:#ffd700
@@ -144,12 +144,12 @@ flowchart TD
     A --> C[getServerSideProps]
     A --> D[getStaticPaths]
     A --> E[API Routes]
-    
+
     B --> F[Build Time]
     C --> G[Request Time]
     D --> H[Dynamic Routes]
     E --> I[Backend Logic]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style C fill:#ffd700
@@ -159,6 +159,7 @@ flowchart TD
 ### getStaticProps
 
 Pre-renders pages at build time. Best for:
+
 - Content that doesn't change often
 - SEO-important pages
 - Fast page loads
@@ -166,6 +167,7 @@ Pre-renders pages at build time. Best for:
 ### getServerSideProps
 
 Renders pages on each request. Best for:
+
 - Frequently changing data
 - User-specific content
 - Real-time data
@@ -173,6 +175,7 @@ Renders pages on each request. Best for:
 ### API Routes
 
 Backend API endpoints in the same project:
+
 - `/api/new-meetup` - Create meetup
 - Serverless functions
 - Full backend capabilities
@@ -187,7 +190,7 @@ flowchart LR
     D --> E[Collection]
     E --> F[CRUD Operations]
     F --> G[Close Connection]
-    
+
     style B fill:#13AA52
     style F fill:#ffd700
 ```
@@ -202,16 +205,19 @@ flowchart LR
 ## Pages Overview
 
 ### Home Page (`/`)
+
 - Lists all meetups
 - Uses `getStaticProps`
 - Revalidates every 10 seconds
 
 ### New Meetup (`/new-meetup`)
+
 - Form to add meetup
 - Sends POST to `/api/new-meetup`
 - Redirects after success
 
 ### Meetup Details (`/[meetupId]`)
+
 - Dynamic route
 - Uses `getStaticPaths` + `getStaticProps`
 - Shows meetup details
@@ -224,12 +230,12 @@ flowchart TD
     A --> C[SSR - Server Rendering]
     A --> D[ISR - Incremental Static]
     A --> E[CSR - Client Rendering]
-    
+
     B --> F[Build Time]
     C --> G[Request Time]
     D --> H[Revalidate]
     E --> I[Client Side]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style D fill:#ffd700
@@ -244,7 +250,7 @@ graph LR
     A --> D[Fast Refresh]
     A --> E[Pre-rendering]
     A --> F[API Routes]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style C fill:#90EE90
@@ -256,6 +262,7 @@ graph LR
 ## SEO Optimization
 
 Next.js provides:
+
 - Pre-rendered HTML for search engines
 - Meta tags support
 - Automatic sitemap generation
@@ -304,11 +311,11 @@ MONGODB_URI=your_mongodb_connection_string
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

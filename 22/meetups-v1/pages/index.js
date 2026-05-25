@@ -23,24 +23,25 @@ import MeetupList from '../components/meetups/MeetupList';
 ]; */
 
 const HomePage = (props) => {
-    /*     const [meetups, setMettups] = useState([]);
+  /*     const [meetups, setMettups] = useState([]);
 
         useEffect(() => {
             // Send HTTP request and fetch data.
             setMettups([DUMMY_MEETUPS]);
         }, []); */
 
-    return (
-        <Fragment>
-            <Head>
-                <title>React Meetups</title>
-                <meta name="description" content="Browse a huge list of highly active React meetups!" />
-            </Head>
-            <MeetupList
-                meetups={props.meetups}
-            />
-        </Fragment>
-    );
+  return (
+    <Fragment>
+      <Head>
+        <title>React Meetups</title>
+        <meta
+          name='description'
+          content='Browse a huge list of highly active React meetups!'
+        />
+      </Head>
+      <MeetupList meetups={props.meetups} />
+    </Fragment>
+  );
 };
 
 // Re-generate the server side page (create new version of the page from
@@ -68,24 +69,27 @@ const HomePage = (props) => {
 // the server will create a new page.
 // THIS CODE WILL RUN ONLY DURING BUILD TIME.
 export const getStaticProps = async () => {
-    // Fetch data from an API.
-    const client = await MongoClient.connect('mongodb+srv://orassayag:ODCxia2kXcDvTOR6mTfy@cluster0.efrzw.mongodb.net/meetups?retryWrites=true&w=majority', { useUnifiedTopology: true });
-    const db = client.db();
-    const meetupsCollection = db.collection('meetups');
-    const meetups = await meetupsCollection.find().toArray();
-    client.close();
-    return {
-        props: {
-            meetups: meetups.map(meetup => ({
-                id: meetup._id.toString(),
-                title: meetup.title,
-                image: meetup.image,
-                address: meetup.address,
-                description: meetup.description
-            }))
-        },
-        revalidate: 10
-    };
+  // Fetch data from an API.
+  const client = await MongoClient.connect(
+    'mongodb+srv://orassayag:ODCxia2kXcDvTOR6mTfy@cluster0.efrzw.mongodb.net/meetups?retryWrites=true&w=majority',
+    { useUnifiedTopology: true }
+  );
+  const db = client.db();
+  const meetupsCollection = db.collection('meetups');
+  const meetups = await meetupsCollection.find().toArray();
+  client.close();
+  return {
+    props: {
+      meetups: meetups.map((meetup) => ({
+        id: meetup._id.toString(),
+        title: meetup.title,
+        image: meetup.image,
+        address: meetup.address,
+        description: meetup.description,
+      })),
+    },
+    revalidate: 10,
+  };
 };
 
 export default HomePage;

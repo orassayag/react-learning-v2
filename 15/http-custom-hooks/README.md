@@ -23,7 +23,7 @@ flowchart TD
     E --> A
     D --> A
     C --> A
-    
+
     style B fill:#ffd700
     style F fill:#90EE90
     style G fill:#FFB6C1
@@ -47,12 +47,12 @@ sequenceDiagram
     participant H as useHttp Hook
     participant API as Backend API
     participant S as State
-    
+
     C->>H: Call sendRequest()
     H->>S: Set loading = true
     H->>API: Fetch data
     API->>H: Response
-    
+
     alt Success
         H->>H: Transform data
         H->>S: Set data & loading = false
@@ -116,15 +116,15 @@ graph TD
     A --> C[Request Function]
     A --> D[Error Handling]
     A --> E[Loading States]
-    
+
     B --> F[isLoading]
     B --> G[error]
     B --> H[data]
-    
+
     C --> I[Configurable]
     C --> J[Reusable]
     C --> K[Async]
-    
+
     style A fill:#ffd700
     style B fill:#90EE90
     style C fill:#FFB6C1
@@ -141,6 +141,7 @@ graph TD
 ### Usage Pattern
 
 The hook returns:
+
 - `isLoading`: Boolean indicating request status
 - `error`: Error object if request fails
 - `sendRequest`: Function to trigger the request
@@ -153,14 +154,14 @@ flowchart LR
     A --> C[POST - Create]
     A --> D[PUT - Update]
     A --> E[DELETE - Remove]
-    
+
     B --> F[useHttp Hook]
     C --> F
     D --> F
     E --> F
-    
+
     F --> G[Unified Interface]
-    
+
     style F fill:#ffd700
     style G fill:#90EE90
 ```
@@ -168,6 +169,7 @@ flowchart LR
 ## Error Handling
 
 The hook provides comprehensive error handling:
+
 - Network errors
 - API errors
 - Parsing errors
@@ -199,11 +201,11 @@ The hook provides comprehensive error handling:
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

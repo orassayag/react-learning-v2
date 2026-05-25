@@ -18,7 +18,7 @@ flowchart TD
     E --> F[Login]
     E --> G[Home]
     E --> H[Navigation]
-    
+
     style B fill:#ffd700
     style C fill:#90EE90
     style D fill:#FFB6C1
@@ -42,7 +42,7 @@ sequenceDiagram
     participant P as AuthContextProvider
     participant C as Context
     participant CH as Child Components
-    
+
     A->>P: Render with children
     P->>C: Initialize context
     P->>CH: Provide context value
@@ -101,6 +101,7 @@ src/
 ### Custom Provider Component
 
 The `auth-context.js` file exports both:
+
 1. The Context itself
 2. A custom Provider component that manages all authentication logic
 
@@ -114,13 +115,13 @@ Authentication logic is completely separated from UI components, following the s
 
 ## Comparison with Basic Context
 
-| Feature | Basic Context | Custom Context |
-|---------|--------------|----------------|
-| State Management | In App component | In Provider component |
-| Logic Location | Scattered | Centralized |
-| Reusability | Limited | High |
-| Testing | Harder | Easier |
-| Code Organization | Coupled | Decoupled |
+| Feature           | Basic Context    | Custom Context        |
+| ----------------- | ---------------- | --------------------- |
+| State Management  | In App component | In Provider component |
+| Logic Location    | Scattered        | Centralized           |
+| Reusability       | Limited          | High                  |
+| Testing           | Harder           | Easier                |
+| Code Organization | Coupled          | Decoupled             |
 
 ## Technologies Used
 
@@ -145,11 +146,11 @@ Authentication logic is completely separated from UI components, following the s
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

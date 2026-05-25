@@ -18,7 +18,7 @@ flowchart TD
     D --> G[Pre-rendered]
     E --> G
     F --> H[Serverless Functions]
-    
+
     style B fill:#000000
     style C fill:#ffd700
     style G fill:#90EE90
@@ -43,11 +43,11 @@ graph TD
     A[pages/] --> B[index.js]
     A --> C[about.js]
     A --> D[api/hello.js]
-    
+
     B --> E[Route: /]
     C --> F[Route: /about]
     D --> G[API: /api/hello]
-    
+
     style A fill:#000000
     style B fill:#ffd700
     style C fill:#ffd700
@@ -100,6 +100,7 @@ styles/
 ### Pages
 
 Every file in the `pages/` directory becomes a route:
+
 - `pages/index.js` → `/`
 - `pages/about.js` → `/about`
 - `pages/blog/post.js` → `/blog/post`
@@ -107,6 +108,7 @@ Every file in the `pages/` directory becomes a route:
 ### API Routes
 
 Files in `pages/api/` become API endpoints:
+
 - `pages/api/hello.js` → `/api/hello`
 
 ### Rendering Methods
@@ -116,11 +118,11 @@ flowchart LR
     A[Next.js Pages] --> B[SSG]
     A --> C[SSR]
     A --> D[CSR]
-    
+
     B --> E[getStaticProps]
     C --> F[getServerSideProps]
     D --> G[useEffect]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style C fill:#ffd700
@@ -134,8 +136,8 @@ Pre-render pages at build time:
 ```javascript
 export async function getStaticProps() {
   return {
-    props: { data }
-  }
+    props: { data },
+  };
 }
 ```
 
@@ -146,8 +148,8 @@ Render on each request:
 ```javascript
 export async function getServerSideProps(context) {
   return {
-    props: { data }
-  }
+    props: { data },
+  };
 }
 ```
 
@@ -161,7 +163,7 @@ graph TD
     A --> E[Image Optimization]
     A --> F[Font Optimization]
     A --> G[Built-in CSS]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style C fill:#90EE90
@@ -179,7 +181,7 @@ sequenceDiagram
     participant N as Next.js
     participant R as React
     participant A as API
-    
+
     B->>N: Request page
     N->>R: Render component
     R->>A: Fetch data (if needed)
@@ -212,7 +214,7 @@ graph LR
     A --> D[Sass]
     A --> E[CSS-in-JS]
     A --> F[Tailwind]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style C fill:#90EE90
@@ -224,6 +226,7 @@ graph LR
 ## Performance Optimizations
 
 Next.js automatically optimizes:
+
 - Code splitting per page
 - Image lazy loading
 - Font optimization
@@ -257,6 +260,7 @@ vercel
 ### Other Platforms
 
 Next.js can be deployed to:
+
 - Netlify
 - AWS
 - Google Cloud
@@ -281,7 +285,7 @@ flowchart TD
     A --> D[Dashboard]
     A --> E[Marketing Site]
     A --> F[Documentation]
-    
+
     style A fill:#000000
     style B fill:#90EE90
     style C fill:#90EE90
@@ -292,11 +296,11 @@ flowchart TD
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

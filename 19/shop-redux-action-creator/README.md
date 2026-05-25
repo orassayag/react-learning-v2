@@ -19,7 +19,7 @@ flowchart TD
     F --> G
     G --> H[Store]
     H --> I[UI Update]
-    
+
     style C fill:#764abc
     style D fill:#ffd700
     style G fill:#90EE90
@@ -45,11 +45,11 @@ sequenceDiagram
     participant API as Backend
     participant S as Store
     participant R as Reducer
-    
+
     C->>T: Dispatch thunk
     T->>API: HTTP Request
     API->>T: Response
-    
+
     alt Success
         T->>S: Dispatch success action
         S->>R: Update state
@@ -123,7 +123,7 @@ graph TD
     C --> D[Async Operations]
     D --> E[Dispatch Actions]
     E --> F[Update Store]
-    
+
     style A fill:#764abc
     style D fill:#ffd700
     style E fill:#90EE90
@@ -133,6 +133,7 @@ graph TD
 ### Thunk Functions
 
 Action creators return functions that:
+
 1. Receive `dispatch` and `getState` as arguments
 2. Perform async operations
 3. Dispatch multiple actions
@@ -148,7 +149,7 @@ graph LR
     A --> D[Error Handling]
     A --> E[Reusable Code]
     A --> F[Testable]
-    
+
     style A fill:#764abc
     style B fill:#90EE90
     style C fill:#90EE90
@@ -160,11 +161,13 @@ graph LR
 ## State Management
 
 ### Cart State
+
 - Items array with products
 - Total quantity
 - Changed flag for sync
 
 ### UI State
+
 - Cart visibility
 - Notification status
 - Loading states
@@ -184,7 +187,7 @@ flowchart TD
     I --> F
     F --> J[Store Update]
     J --> K[UI Render]
-    
+
     style E fill:#ffd700
     style G fill:#764abc
     style H fill:#FFB6C1
@@ -193,21 +196,25 @@ flowchart TD
 ## Available Actions
 
 ### Cart Actions (Thunks)
+
 - `sendCartData()` - Sync cart to backend
 - `fetchCartData()` - Load cart from backend
 
 ### Cart Slice Actions
+
 - `addItemToCart(item)` - Add product to cart
 - `removeItemFromCart(id)` - Remove product
 - `replaceCart(cart)` - Replace entire cart
 
 ### UI Actions
+
 - `showNotification(notification)` - Display message
 - `toggle()` - Show/hide cart
 
 ## Error Handling
 
 The application handles:
+
 - Network errors
 - API failures
 - Invalid data
@@ -239,11 +246,11 @@ The application handles:
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

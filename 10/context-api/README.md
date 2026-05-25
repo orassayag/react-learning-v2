@@ -18,7 +18,7 @@ flowchart TD
     D --> G[useContext Hook]
     F --> H[Auth State]
     G --> H
-    
+
     style B fill:#ffd700
     style F fill:#90EE90
     style G fill:#90EE90
@@ -42,13 +42,13 @@ sequenceDiagram
     participant C as Context
     participant LS as LocalStorage
     participant N as Navigation
-    
+
     U->>L: Enter credentials
     L->>C: Update auth state
     C->>LS: Save login state
     C->>N: Trigger re-render
     N->>U: Show logged-in UI
-    
+
     U->>N: Click logout
     N->>C: Update auth state
     C->>LS: Remove login state
@@ -136,11 +136,11 @@ Components like `Navigation` and `MainHeader` consume the context using the `use
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

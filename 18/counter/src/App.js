@@ -7,7 +7,7 @@ import UserProfile from './components/UserProfile';
 /* import CounterClass from './components/Counter'; */
 
 function App() {
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   return (
     <Fragment>

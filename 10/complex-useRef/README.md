@@ -16,7 +16,7 @@ flowchart TD
     D --> E[useImperativeHandle]
     E --> F[Custom Methods]
     F --> G[DOM Manipulation]
-    
+
     style B fill:#ffd700
     style D fill:#90EE90
     style E fill:#FFB6C1
@@ -40,7 +40,7 @@ sequenceDiagram
     participant R as useRef
     participant I as Input Component
     participant D as DOM Element
-    
+
     L->>R: Create ref
     L->>I: Pass ref via forwardRef
     I->>D: Attach ref to input
@@ -121,7 +121,7 @@ graph LR
     D --> E[useImperativeHandle]
     E --> F[Expose focus method]
     F --> G[Parent calls method]
-    
+
     style E fill:#ffd700
     style F fill:#90EE90
 ```
@@ -166,11 +166,11 @@ graph LR
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

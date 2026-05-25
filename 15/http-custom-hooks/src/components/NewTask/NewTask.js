@@ -15,14 +15,17 @@ const NewTask = (props) => {
   };
 
   const enterTaskHandler = async (taskText) => {
-    sendTaskRequest({
-      url: 'https://jsonplaceholder.typicode.com/posts',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    sendTaskRequest(
+      {
+        url: 'https://jsonplaceholder.typicode.com/posts',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: { text: taskText },
       },
-      body: { text: taskText }
-    }, createTask.bind(null, taskText));
+      createTask.bind(null, taskText)
+    );
   };
 
   /*   const [isLoading, setIsLoading] = useState(false);

@@ -20,7 +20,7 @@ flowchart TD
     G --> H
     H --> D
     D --> B
-    
+
     style D fill:#764abc
     style F fill:#ffd700
     style G fill:#ffd700
@@ -47,7 +47,7 @@ sequenceDiagram
     participant D as Dispatch
     participant S as Store
     participant R as Reducer
-    
+
     U->>C: Click button
     C->>D: dispatch(action)
     D->>R: Send action
@@ -106,15 +106,15 @@ graph TD
     A[createSlice] --> B[name]
     A --> C[initialState]
     A --> D[reducers]
-    
+
     D --> E[increment]
     D --> F[decrement]
     D --> G[increaseBy]
     D --> H[toggleCounter]
-    
+
     A --> I[Generates Actions]
     A --> J[Generates Reducer]
-    
+
     style A fill:#764abc
     style D fill:#ffd700
     style I fill:#90EE90
@@ -124,6 +124,7 @@ graph TD
 ### Store Configuration
 
 The store combines multiple slices:
+
 - **Counter Slice**: Manages counter state and logic
 - **Auth Slice**: Manages authentication state
 
@@ -141,12 +142,12 @@ The store combines multiple slices:
 graph LR
     A[Redux Store] --> B[counter]
     A --> C[auth]
-    
+
     B --> D[counter: 0]
     B --> E[showCounter: true]
-    
+
     C --> F[isAuthenticated: false]
-    
+
     style A fill:#764abc
     style B fill:#ffd700
     style C fill:#ffd700
@@ -161,10 +162,10 @@ flowchart TD
     B -->|No| D{Need Dispatch?}
     D -->|Yes| E[useDispatch]
     D -->|No| F[Regular Component]
-    
+
     C --> G[Read from Store]
     E --> H[Dispatch Actions]
-    
+
     style C fill:#90EE90
     style E fill:#FFB6C1
     style G fill:#61dafb
@@ -174,12 +175,14 @@ flowchart TD
 ## Available Actions
 
 ### Counter Actions
+
 - `increment()` - Increase counter by 1
 - `decrement()` - Decrease counter by 1
 - `increaseBy(amount)` - Increase by specific amount
 - `toggleCounter()` - Show/hide counter
 
 ### Auth Actions
+
 - `login()` - Set authenticated state
 - `logout()` - Clear authenticated state
 
@@ -207,11 +210,11 @@ flowchart TD
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

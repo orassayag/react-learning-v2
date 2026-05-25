@@ -20,7 +20,7 @@ flowchart TD
     G -->|Error| I[Show Error]
     H --> J[Update UI]
     I --> J
-    
+
     style B fill:#ffd700
     style D fill:#90EE90
     style F fill:#FFB6C1
@@ -46,7 +46,7 @@ sequenceDiagram
     participant E as useEffect
     participant API as Backend
     participant S as Store
-    
+
     U->>C: Add to cart
     C->>S: Dispatch action
     S->>C: State updated
@@ -119,7 +119,7 @@ graph TD
     C -->|No| E[Skip]
     D --> F[Side Effect Logic]
     F --> G[Cleanup if needed]
-    
+
     style B fill:#ffd700
     style D fill:#90EE90
     style F fill:#FFB6C1
@@ -128,6 +128,7 @@ graph TD
 ### Synchronization Pattern
 
 The App component uses useEffect to:
+
 1. Watch cart state changes
 2. Send cart data to backend
 3. Handle success/error responses
@@ -139,29 +140,29 @@ The App component uses useEffect to:
 graph LR
     A[Side Effects] --> B[useEffect Approach]
     A --> C[Action Creator Approach]
-    
+
     B --> D[In Components]
     B --> E[React Lifecycle]
     B --> F[Component Logic]
-    
+
     C --> G[In Store]
     C --> H[Redux Middleware]
     C --> I[Reusable Thunks]
-    
+
     style B fill:#ffd700
     style C fill:#764abc
 ```
 
 ## Comparison: useEffect vs Action Creators
 
-| Aspect | useEffect | Action Creators |
-|--------|-----------|----------------|
-| **Location** | Component | Store/Actions |
-| **Reusability** | Lower | Higher |
-| **Testing** | Component test | Unit test |
-| **Separation** | Coupled to component | Decoupled |
-| **Complexity** | Simpler for small apps | Better for large apps |
-| **React Integration** | Native React | Redux middleware |
+| Aspect                | useEffect              | Action Creators       |
+| --------------------- | ---------------------- | --------------------- |
+| **Location**          | Component              | Store/Actions         |
+| **Reusability**       | Lower                  | Higher                |
+| **Testing**           | Component test         | Unit test             |
+| **Separation**        | Coupled to component   | Decoupled             |
+| **Complexity**        | Simpler for small apps | Better for large apps |
+| **React Integration** | Native React           | Redux middleware      |
 
 ## Data Flow
 
@@ -175,7 +176,7 @@ flowchart TD
     F --> G{Success?}
     G -->|Yes| H[Success Notification]
     G -->|No| I[Error Notification]
-    
+
     style E fill:#ffd700
     style F fill:#90EE90
 ```
@@ -183,11 +184,13 @@ flowchart TD
 ## State Management
 
 ### Cart State
+
 - Items array with products
 - Total quantity
 - Changed flag
 
 ### UI State
+
 - Cart visibility toggle
 - Notification status and message
 
@@ -207,7 +210,7 @@ graph TD
     A --> D[Easy to Understand]
     A --> E[No Middleware]
     A --> F[Direct Control]
-    
+
     style A fill:#ffd700
     style B fill:#90EE90
     style C fill:#90EE90
@@ -219,10 +222,12 @@ graph TD
 ## Available Actions
 
 ### Cart Actions
+
 - `addItemToCart(item)` - Add product to cart
 - `removeItemFromCart(id)` - Remove product
 
 ### UI Actions
+
 - `showNotification(notification)` - Display message
 - `toggle()` - Show/hide cart
 
@@ -251,11 +256,11 @@ graph TD
 
 ## Author
 
-* **Or Assayag** - *Initial work* - [orassayag](https://github.com/orassayag)
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- **Or Assayag** - _Initial work_ - [orassayag](https://github.com/orassayag)
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 ## License
 

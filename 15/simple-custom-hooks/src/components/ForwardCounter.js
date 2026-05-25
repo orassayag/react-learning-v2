@@ -5,7 +5,7 @@ import useCounter from '../hooks/use-counter';
 const ForwardCounter = () => {
   const counter = useCounter(true);
 
-/*   const [counter, setCounter] = useState(0);
+  /*   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {

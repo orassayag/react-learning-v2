@@ -34,11 +34,11 @@ const Login = () => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: '',
-    isValid: null
+    isValid: null,
   });
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: '',
-    isValid: null
+    isValid: null,
   });
   const { isValid: emailIsValid } = emailState;
   const { isValid: passwordIsValid } = passwordState;
@@ -48,13 +48,11 @@ const Login = () => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setFormIsValid(
-        emailIsValid && passwordIsValid
-      );
+      setFormIsValid(emailIsValid && passwordIsValid);
     }, 500);
     return () => {
       clearTimeout(identifier);
-    }
+    };
   }, [emailIsValid, passwordIsValid]);
 
   /*   useEffect(() => {
@@ -111,9 +109,9 @@ const Login = () => {
       <form onSubmit={submitHandler}>
         <Input
           ref={emailInputRef}
-          id="email"
-          label="E-Mail"
-          type="email"
+          id='email'
+          label='E-Mail'
+          type='email'
           isValid={emailIsValid}
           value={emailState.value}
           onChange={emailChangeHandler}
@@ -121,9 +119,9 @@ const Login = () => {
         />
         <Input
           ref={passwordInputRef}
-          id="password"
-          label="Password"
-          type="password"
+          id='password'
+          label='Password'
+          type='password'
           isValid={passwordIsValid}
           value={passwordState.value}
           onChange={passwordChangeHandler}
@@ -156,7 +154,7 @@ const Login = () => {
           />
         </div> */}
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn}>
+          <Button type='submit' className={classes.btn}>
             Login
           </Button>
         </div>

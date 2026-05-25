@@ -9,6 +9,7 @@ Everyone is welcome to contribute to this project. Contributing doesn't just mea
 ### Reporting Issues
 
 If you find a bug or have a feature request:
+
 1. Check if the issue already exists in the GitHub Issues
 2. If not, create a new issue with:
    - Clear title and description
@@ -31,11 +32,13 @@ If you find a bug or have a feature request:
 ### Code Style Guidelines
 
 This project uses:
+
 - **React** with hooks and functional components
 - **JavaScript/JSX** for component development
 - Modern ES6+ syntax
 
 Before submitting:
+
 ```bash
 # Install dependencies for the example you're working on
 cd <example-folder>
@@ -59,6 +62,7 @@ npm run build
 ### Adding New Examples
 
 When adding new React examples:
+
 1. Create a new folder with a descriptive name under the appropriate section number
 2. Include a `README.md` explaining what the example demonstrates
 3. Set up the project using Create React App or Next.js as appropriate
@@ -68,6 +72,7 @@ When adding new React examples:
 ### Documentation
 
 When contributing:
+
 1. Update the main `README.md` if adding a new example
 2. Include a `README.md` in each example folder explaining:
    - What the example demonstrates
@@ -79,9 +84,9 @@ When contributing:
 
 Please feel free to contact me with any question, comment, pull-request, issue, or any other thing you have in mind.
 
-* Or Assayag <orassayag@gmail.com>
-* GitHub: https://github.com/orassayag
-* StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
-* LinkedIn: https://linkedin.com/in/orassayag
+- Or Assayag <orassayag@gmail.com>
+- GitHub: https://github.com/orassayag
+- StackOverflow: https://stackoverflow.com/users/4442606/or-assayag?tab=profile
+- LinkedIn: https://linkedin.com/in/orassayag
 
 Thank you for contributing! 🙏
